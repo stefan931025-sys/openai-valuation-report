@@ -27,6 +27,6 @@ jobs:
     - name: Upload PDF for direct download
       uses: actions/upload-artifact@v4
       with:
-        name: OpenAI-BofA-Valuation-Report
-        path: OpenAI_BofA_Valuation_Analysis.pdf
+        name: RBI-Overseas-Deposit-Report
+        path: RBI_Overseas_Deposit_Scheme_Analysis_With_Disclosure.pdf
         if-no-files-found: error
