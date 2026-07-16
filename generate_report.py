@@ -3,17 +3,14 @@ from fpdf import FPDF
 
 class FinancialReportPDF(FPDF):
     def header(self):
-        # Draw a subtle top accent bar
-        self.set_fill_color(0, 51, 102) # Deep blue accent
+        self.set_fill_color(0, 51, 102)
         self.rect(0, 0, 210, 8, "F")
         self.set_y(15)
 
     def footer(self):
-        # Position at 1.5 cm from bottom
         self.set_y(-15)
         self.set_font("Helvetica", "I", 8)
         self.set_text_color(128, 128, 128)
-        # Page number
         self.cell(0, 10, f"Page {self.page_no()}/{{nb}}", align="C")
 
 def create_report():
@@ -24,20 +21,20 @@ def create_report():
     
     # --- TITLE SECTION ---
     pdf.set_font("Helvetica", "B", 18)
-    pdf.set_text_color(0, 51, 102) # Deep blue
-    pdf.multi_cell(170, 10, "THE VALUATION IMPLICATIONS OF BANK OF AMERICA'S CREDIT FACILITY TO OPENAI", align="L")
+    pdf.set_text_color(0, 51, 102)
+    pdf.multi_cell(170, 10, "EVALUATING THE SYSTEMIC EFFICACY OF THE RBI'S 2026 SPECIAL SWAP-BACKED FCNR(B) DEPOSIT MOBILISATION SCHEME", align="L")
     
     pdf.set_font("Helvetica", "B", 11)
     pdf.set_text_color(100, 100, 100)
-    pdf.cell(170, 6, "A Macro-Financial and Investment Banking Analysis", ln=True)
+    pdf.cell(170, 6, "A Critical Macro-Financial Analysis of Rupee Stabilization", ln=True)
     
     pdf.ln(4)
     pdf.set_font("Helvetica", "", 10)
     pdf.set_text_color(80, 80, 80)
     pdf.cell(170, 5, "Author: Tshepo Stefan Kotelo", ln=True)
-    pdf.cell(170, 5, "Date: July 16, 2026", ln=True)
+    pdf.cell(170, 5, "Date: July 17, 2026", ln=True)
     
-    # Horizontal Divider Line
+    # Divider
     pdf.set_draw_color(200, 200, 200)
     pdf.line(20, pdf.get_y() + 5, 190, pdf.get_y() + 5)
     pdf.ln(10)
@@ -51,16 +48,12 @@ def create_report():
     pdf.set_font("Helvetica", "", 10)
     pdf.set_text_color(30, 30, 30)
     summary_text = (
-        "On July 8, 2026, Bank of America (BofA) reversed its historically conservative lending stance "
-        "and extended a milestone $520 million credit line to OpenAI. This transaction officially pushes "
-        "OpenAI's total available credit facility beyond the $5 billion mark and establishes BofA as one "
-        "of the company's major creditors.\n\n"
-        "This analysis evaluates the dual-sided valuation implications of this transaction. For OpenAI, "
-        "the credit facility represents a critical, non-dilutive liquidity runway to fund capital-intensive "
-        "compute infrastructure. It protects a targeted $1 trillion IPO valuation as the company navigates "
-        "a massive cash burn. For Bank of America, the credit line is a strategic relationship-pricing "
-        "mechanism designed to secure a lead underwriting and advisory role in the coveted mega-IPOs "
-        "of the AI 'super-cycle'."
+        "In June 2026, amid escalating geopolitical tensions in West Asia and surging global crude oil prices, "
+        "the Reserve Bank of India (RBI) introduced a targeted Foreign Currency Non-Resident Bank [FCNR(B)] swap window. "
+        "The mechanism offers commercial banks a direct US Dollar-Rupee swap at par for 3-to-5-year term deposits mobilised "
+        "from the Non-Resident Indian (NRI) diaspora, absorbing 100% of the currency hedging costs. This analysis evaluates "
+        "the economic efficacy of this scheme, which successfully mobilised close to $10 billion within its initial weeks "
+        "but faces mounting headwinds as rising global bond yields and US monetary tightness raise the cost of offshore funding."
     )
     pdf.multi_cell(170, 6, summary_text)
     pdf.ln(6)
@@ -68,117 +61,63 @@ def create_report():
     # --- SECTION II ---
     pdf.set_font("Helvetica", "B", 13)
     pdf.set_text_color(0, 51, 102)
-    pdf.cell(170, 8, "II. METHODOLOGY, DATA SUITABILITY, AND LIMITATIONS", ln=True)
+    pdf.cell(170, 8, "II. MECHANISTIC DESIGN & RESEARCH INTEGRITY", ln=True)
     pdf.ln(2)
     
-    methodology_intro = (
-        "To evaluate the capital structure and valuation trajectory of OpenAI, this study triangulates private "
-        "market funding records, news reports, and investment banking league tables. To maintain the highest "
-        "standards of research integrity, we explicitly define the boundaries, suitability, and limitations of "
-        "these data sources below:"
-    )
     pdf.set_font("Helvetica", "", 10)
-    pdf.multi_cell(170, 6, methodology_intro)
-    pdf.ln(4)
-
-    # Sub-bullets
-    points = [
-        ("1. Granularity and Confidentiality of S-1 Filings", 
-         "OpenAI confidentially submitted a draft Form S-1 registration statement to the SEC in June 2026. Because this filing is confidential, exact balance-sheet components, debt covenants, interest margins, and formal risk disclosures are shielded from public view. To circumvent this, we rely on verified historical disclosures of the company's capital history-such as its massive revolving credit facilities-to build a baseline."),
-        ("2. Timeframe Adequacy and Financial Revisions", 
-         "Our quantitative runway modeling operates on reported financial performance and capital injections up to July 2026. This timeline is highly adequate to capture the inflection point where OpenAI transitioned to leveraged, enterprise-scale commercialization. While these figures are subject to retrospective audit adjustments prior to the public IPO, the core ratio of rapid development costs to available credit remains structurally valid."),
-        ("3. Methodological Justification of the Debt-to-Equity Proxy", 
-         "To assess the true valuation impact of a $520 million credit facility on an enterprise valued near $1 trillion, we utilize high-growth tech debt-to-equity ratios as an analytical proxy. For late-stage private technology companies, traditional debt serviceability metrics (such as Debt-to-EBITDA) are analytically ineffective due to net losses from massive capital expenditures on AI chip clusters.")
-    ]
-    
-    for title, desc in points:
-        pdf.set_font("Helvetica", "B", 10)
-        pdf.set_text_color(0, 51, 102)
-        pdf.cell(170, 6, title, ln=True)
-        pdf.set_font("Helvetica", "", 10)
-        pdf.set_text_color(30, 30, 30)
-        pdf.multi_cell(170, 5, desc)
-        pdf.ln(3)
-
-    pdf.add_page() # Move to Page 2 for structural neatness
+    pdf.set_text_color(30, 30, 30)
+    mechanics_text = (
+        "To evaluate this framework, this study relies on real-time central bank announcements, commercial rate-ceiling "
+        "suspensions, and empirical balance-of-payments data. The core mechanism is structurally designed to address the "
+        "hedging cost bottleneck. Historically, commercial banks seeking foreign currency deposits faced substantial forward-premium "
+        "hedging expenses to cover the exchange-rate risk of converting USD deposits into domestic lending. The 2026 scheme "
+        "bypasses this: lenders swap foreign currency directly with the RBI at par, effectively reducing net hedging costs to 0%."
+    )
+    pdf.multi_cell(170, 6, mechanics_text)
+    pdf.ln(6)
 
     # --- SECTION III ---
     pdf.set_font("Helvetica", "B", 13)
     pdf.set_text_color(0, 51, 102)
-    pdf.cell(170, 8, "III. DIVERGENT VALUATION PERSPECTIVES & RESOLUTION", ln=True)
+    pdf.cell(170, 8, "III. DIVERGENT MACRO PERSPECTIVES", ln=True)
     pdf.ln(2)
     
-    pdf.set_font("Helvetica", "B", 10)
-    pdf.cell(170, 6, "1. Comparative Analysis of Divergent Perspectives", ln=True)
-    pdf.set_font("Helvetica", "", 10)
-    pdf.set_text_color(30, 30, 30)
     perspectives = (
-        "- The Non-Dilutive Runway Perspective (Optimistic): Proponents argue the credit facility is an "
-        "overwhelming signal of fundamental strength. It provides OpenAI with cheap, non-dilutive working capital, "
-        "allowing the firm to delay its IPO to 2027 to optimize its enterprise margins and ensure it achieves "
-        "its desired $1 trillion valuation.\n\n"
-        "- The Investment Banking 'Loss Leader' Perspective (Skeptical): Skeptics assert that a $520 million loan "
-        "is minor relative to OpenAI's projected infrastructure spend. From this view, the loan is an aggressive "
-        "relationship-pricing maneuver by Bank of America to crowd out rivals like Morgan Stanley and JPMorgan, "
-        "securing lucrative lead advisory fees for the upcoming IPO."
+        "- Perspective A (Optimistic): Proponents argue that the special swap window is an exceptionally efficient, "
+        "non-inflationary shield for the Indian rupee. By mobilizing sticky, long-term NRI capital, the central bank "
+        "rapidly builds its foreign exchange reserves without relying on direct open-market intervention.\n\n"
+        "- Perspective B (Skeptical): Conversely, critics highlight that suspending interest rate ceilings forces banks "
+        "into an aggressive deposit-rate price war. Tight global liquidity and the West Asia conflict drive up offshore "
+        "costs of leveraged structures by 25-40 basis points, dampening long-term viability."
     )
     pdf.multi_cell(170, 6, perspectives)
-    pdf.ln(4)
-
-    pdf.set_font("Helvetica", "B", 10)
-    pdf.set_text_color(0, 51, 102)
-    pdf.cell(170, 6, "2. Resolution via Data Triangulation", ln=True)
-    pdf.set_font("Helvetica", "", 10)
-    pdf.set_text_color(30, 30, 30)
-    resolution_text = (
-        "Triangulating both arguments against industry capital-market data reveals that both perspectives "
-        "are valid but operate on different economic planes. The $520 million credit line is minor compared "
-        "to OpenAI's overall infrastructure costs. However, its inclusion is highly significant because "
-        "it serves as an official institutional seal of approval from a Tier-1 US bank, reinforcing market "
-        "confidence in OpenAI's creditworthiness ahead of its listing."
-    )
-    pdf.multi_cell(170, 6, resolution_text)
-    pdf.ln(6)
+    
+    pdf.add_page() # Move to page 2
 
     # --- SECTION IV ---
     pdf.set_font("Helvetica", "B", 13)
     pdf.set_text_color(0, 51, 102)
-    pdf.cell(170, 8, "IV. ANALYTICAL REASONING & SCENARIO ANALYSIS", ln=True)
+    pdf.cell(170, 8, "IV. COUNTERFACTUAL ANALYSIS", ln=True)
     pdf.ln(2)
     
-    pdf.set_font("Helvetica", "B", 10)
-    pdf.cell(170, 6, "1. Counterfactual Framework: 'If-X-Then-Y'", ln=True)
     pdf.set_font("Helvetica", "I", 10)
     pdf.set_text_color(50, 50, 50)
-    pdf.multi_cell(170, 5, "If Bank of America and peer financial institutions had not extended these non-dilutive credit facilities, then OpenAI would have been forced to either accelerate its IPO timeline into a volatile 2026 market at a valuation below its $1 trillion target, or execute another highly dilutive private equity round.")
+    pdf.multi_cell(170, 5, "If the RBI had not implemented the concessional swap facility, then domestic commercial banks would have been unable to compete with high-yielding US Dollar deposits, forcing the RBI to actively defend the rupee via direct spot-market sales.")
     pdf.ln(3)
-    
-    pdf.set_font("Helvetica", "", 10)
-    pdf.set_text_color(30, 30, 30)
-    counterfactual_desc = (
-        "Without this low-cost capital buffer, OpenAI's massive cash consumption would have rapidly "
-        "depleted its liquid cash reserves. This would either lead to immediate equity dilution at "
-        "a lower private valuation, or a precipitous public listing before enterprise software revenues "
-        "scaled to match capacity costs, forcing a sub-$1 trillion listing."
-    )
-    pdf.multi_cell(170, 6, counterfactual_desc)
-    pdf.ln(6)
 
-    # --- SECTION V ---
+    # --- SECTION V (TABLE) ---
     pdf.set_font("Helvetica", "B", 13)
     pdf.set_text_color(0, 51, 102)
     pdf.cell(170, 8, "V. EVALUATIVE CONFIDENCE & UNCERTAINTY MATRIX", ln=True)
     pdf.ln(4)
 
-    # Table Setup
+    # Table headers
     pdf.set_font("Helvetica", "B", 8)
     pdf.set_fill_color(0, 51, 102)
     pdf.set_text_color(255, 255, 255)
-    
-    # Headers
-    pdf.cell(50, 8, "Valuation Assessment", border=1, fill=True, align="C")
-    pdf.cell(30, 8, "Confidence Level", border=1, fill=True, align="C")
-    pdf.cell(45, 8, "Justifying Evidence", border=1, fill=True, align="C")
+    pdf.cell(50, 8, "Assessment", border=1, fill=True, align="C")
+    pdf.cell(30, 8, "Confidence", border=1, fill=True, align="C")
+    pdf.cell(45, 8, "Evidence", border=1, fill=True, align="C")
     pdf.cell(45, 8, "Primary Uncertainty", border=1, fill=True, align="C")
     pdf.ln()
 
@@ -186,29 +125,15 @@ def create_report():
     pdf.set_font("Helvetica", "", 7.5)
     pdf.set_text_color(30, 30, 30)
     
-    row1 = [
-        "Credit facility acts as non-dilutive runway defense for a $1T IPO.",
-        "Medium-High",
-        "Alignment with confidential S-1 files & delay deliberations.",
-        "Opaque covenants, rates, and exact draw-down criteria."
-    ]
-    row2 = [
-        "BofA lending is a strategic loss-leader to secure prime IPO role.",
-        "High",
-        "BofA's 60% market share in AI capital fundraising since 2025.",
-        "Confidential underwriting fees & late shifts in rosters."
-    ]
-    row3 = [
-        "OpenAI can support a $1T valuation purely via consumer subs.",
-        "Low",
-        "High compute spend proves need for massive B2B/enterprise scale.",
-        "Rapid changes in hardware efficiency reducing GPU costs."
+    rows = [
+        ["Inflow Efficacy: Will mobilize $50-70B by Sept.", "Medium-Low", "Initial $10B has cooled due to tight offshore liquidity.", "West Asia conflict duration and Fed rate path."],
+        ["Rupee Defense: Concessional swap cushions INR.", "High", "Capital absorption protected BOP during July volatility.", "Trade deficit if oil breaches $95/barrel."],
+        ["Bank NIMs: Hedging sops protect margins.", "Medium-High", "Elimination of standard forward premium swap-back costs.", "Local price wars as banks compete on rates."]
     ]
 
-    for row in [row1, row2, row3]:
+    for row in rows:
         x_start = pdf.get_x()
         y_start = pdf.get_y()
-        
         pdf.multi_cell(50, 4, row[0], border=1)
         pdf.set_xy(x_start + 50, y_start)
         pdf.multi_cell(30, 4, row[1], border=1, align="C")
@@ -218,22 +143,15 @@ def create_report():
         pdf.multi_cell(45, 4, row[3], border=1)
         pdf.ln(2)
 
-    pdf.ln(6)
+    pdf.ln(4)
 
-    # --- SECTION VI & VII ---
+    # --- SECTION VI ---
     pdf.set_font("Helvetica", "B", 13)
     pdf.set_text_color(0, 51, 102)
-    pdf.cell(170, 8, "VI. CONCLUSION", ln=True)
+    pdf.cell(170, 8, "VI. POLICY RECONCILIATION & CONCLUSION", ln=True)
     pdf.ln(2)
     pdf.set_font("Helvetica", "", 10)
-    pdf.set_text_color(30, 30, 30)
-    conclusion_text = (
-        "Bank of America's $520 million loan to OpenAI is a highly calculated, mutually beneficial transaction. "
-        "For OpenAI, it secures critical operational runway, preserving its ability to defend a premium $1 trillion "
-        "IPO valuation. For Bank of America, the credit line solidifies its position at the absolute forefront of "
-        "Wall Street's AI investment banking super-cycle."
-    )
-    pdf.multi_cell(170, 6, conclusion_text)
+    pdf.multi_cell(170, 5.5, "The special FCNR(B) swap window is a tactical volatility shield, but not a structural panacea. It must be paired with long-term FDI enhancements rather than volatile, rate-sensitive diaspora deposits.")
     pdf.ln(6)
 
     # Divider
@@ -241,7 +159,7 @@ def create_report():
     pdf.line(20, pdf.get_y(), 190, pdf.get_y())
     pdf.ln(4)
 
-    # Disclosure
+    # --- SECTION VII: AI DISCLOSURE ---
     pdf.set_font("Helvetica", "B", 9)
     pdf.set_text_color(100, 100, 100)
     pdf.cell(170, 5, "VII. AI DISCLOSURE STATEMENT", ln=True)
@@ -254,10 +172,8 @@ def create_report():
     )
     pdf.multi_cell(170, 4.5, disclosure_text)
 
-    # Save File
-    output_filename = "OpenAI_BofA_Valuation_Analysis.pdf"
+    output_filename = "RBI_Overseas_Deposit_Scheme_Analysis_With_Disclosure.pdf"
     pdf.output(output_filename)
-    print(f"Success! PDF compiled cleanly as '{output_filename}'")
 
 if __name__ == "__main__":
     create_report()
