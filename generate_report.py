@@ -53,7 +53,7 @@ def create_report():
     summary_text = (
         "On July 8, 2026, Bank of America (BofA) reversed its historically conservative lending stance "
         "and extended a milestone $520 million credit line to OpenAI. This transaction officially pushes "
-        "OpenAI’s total available credit facility beyond the $5 billion mark and establishes BofA as one "
+        "OpenAI's total available credit facility beyond the $5 billion mark and establishes BofA as one "
         "of the company's major creditors.\n\n"
         "This analysis evaluates the dual-sided valuation implications of this transaction. For OpenAI, "
         "the credit facility represents a critical, non-dilutive liquidity runway to fund capital-intensive "
@@ -84,7 +84,7 @@ def create_report():
     # Sub-bullets
     points = [
         ("1. Granularity and Confidentiality of S-1 Filings", 
-         "OpenAI confidentially submitted a draft Form S-1 registration statement to the SEC in June 2026. Because this filing is confidential, exact balance-sheet components, debt covenants, interest margins, and formal risk disclosures are shielded from public view. To circumvent this, we rely on verified historical disclosures of the company's capital history—such as its massive revolving credit facilities—to build a baseline."),
+         "OpenAI confidentially submitted a draft Form S-1 registration statement to the SEC in June 2026. Because this filing is confidential, exact balance-sheet components, debt covenants, interest margins, and formal risk disclosures are shielded from public view. To circumvent this, we rely on verified historical disclosures of the company's capital history-such as its massive revolving credit facilities-to build a baseline."),
         ("2. Timeframe Adequacy and Financial Revisions", 
          "Our quantitative runway modeling operates on reported financial performance and capital injections up to July 2026. This timeline is highly adequate to capture the inflection point where OpenAI transitioned to leveraged, enterprise-scale commercialization. While these figures are subject to retrospective audit adjustments prior to the public IPO, the core ratio of rapid development costs to available credit remains structurally valid."),
         ("3. Methodological Justification of the Debt-to-Equity Proxy", 
@@ -118,7 +118,7 @@ def create_report():
         "allowing the firm to delay its IPO to 2027 to optimize its enterprise margins and ensure it achieves "
         "its desired $1 trillion valuation.\n\n"
         "- The Investment Banking 'Loss Leader' Perspective (Skeptical): Skeptics assert that a $520 million loan "
-        "is minor relative to OpenAI’s projected infrastructure spend. From this view, the loan is an aggressive "
+        "is minor relative to OpenAI's projected infrastructure spend. From this view, the loan is an aggressive "
         "relationship-pricing maneuver by Bank of America to crowd out rivals like Morgan Stanley and JPMorgan, "
         "securing lucrative lead advisory fees for the upcoming IPO."
     )
@@ -156,7 +156,7 @@ def create_report():
     pdf.set_font("Helvetica", "", 10)
     pdf.set_text_color(30, 30, 30)
     counterfactual_desc = (
-        "Without this low-cost capital buffer, OpenAI’s massive cash consumption would have rapidly "
+        "Without this low-cost capital buffer, OpenAI's massive cash consumption would have rapidly "
         "depleted its liquid cash reserves. This would either lead to immediate equity dilution at "
         "a lower private valuation, or a precipitous public listing before enterprise software revenues "
         "scaled to match capacity costs, forcing a sub-$1 trillion listing."
@@ -228,10 +228,10 @@ def create_report():
     pdf.set_font("Helvetica", "", 10)
     pdf.set_text_color(30, 30, 30)
     conclusion_text = (
-        "Bank of America’s $520 million loan to OpenAI is a highly calculated, mutually beneficial transaction. "
+        "Bank of America's $520 million loan to OpenAI is a highly calculated, mutually beneficial transaction. "
         "For OpenAI, it secures critical operational runway, preserving its ability to defend a premium $1 trillion "
         "IPO valuation. For Bank of America, the credit line solidifies its position at the absolute forefront of "
-        "Wall Street’s AI investment banking super-cycle."
+        "Wall Street's AI investment banking super-cycle."
     )
     pdf.multi_cell(170, 6, conclusion_text)
     pdf.ln(6)
